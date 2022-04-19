@@ -1,0 +1,14 @@
+<%= render 'layouts/messages' %>
+<% if @stock %>
+  <div class="card" style="width: 24rem;">
+    <div class="card-body text-light">
+      <%= image_tag 'stock-exc.jpg', class: "card-img-top" %> 
+      <h5 class="card-title">Stock Details:</h5>
+      <p class="card-text bg-gradient">
+          Name: <strong><%= @stock.name %></strong><br>
+          Symbol: <strong><%= @stock.ticker %></strong><br>
+          Last Price: <strong><%= @stock.last_price %></strong><br>
+      </p>
+    </div>
+  </div>
+<% end %>
