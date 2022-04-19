@@ -12,15 +12,15 @@
   <% end %>
 
   <% if @stock %>
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          Name: <%= @stock.name %>
-          Symbol: <%= @stock.name %>
-          Last Price: <%= @stock.last_price %>
+    <div class="card bg-dark" style="width: 24rem;">
+      <div class="card-body text-light">
+        <%= image_tag 'stock-exc.jpg', class: "card-img-top" %> 
+        <h5 class="card-title">Stock Details:</h5>
+        <p class="card-text bg-gradient">
+          Name: <strong><%= @stock.name %></strong><br>
+          Symbol: <strong><%= @stock.ticker %></strong><br>
+          Last Price: <strong><%= @stock.last_price %></strong><br>
         </p>
-        <a href="/stocks/search" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
   <% end %>
