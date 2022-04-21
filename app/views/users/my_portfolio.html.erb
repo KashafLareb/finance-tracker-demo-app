@@ -1,3 +1,5 @@
+<%= render 'help' %>
+
 <h1>My Portfolio</h1>
 
 <div class="mt-5 col-9">
@@ -11,28 +13,11 @@
     </div>
   <% end %>
 
-  <div class="position-relative">
-    <div class="position-absolute top-0 end-0">
-      <p>
-        <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          HELP
-        </button><br>
-      </p>
-      <div style="min-height: 120px;">
-        <div class="collapse" id="collapseExample">
-          <div class="card card-body bg-gradient" style="width: 300px;">
-            Some valid stock ticker symbols are:
-            <ul>
-              <li>AMZN: for amazon
-              <li>MSFT: for microsoft
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="display-result">
   </div>
-  <br>
-  <div class="display-result"> 
-  </div>
-  
+
+  <% if !@tracked_stocks.empty? %>
+    <%= render 'stocks/stocks_list' %>
+  <% end %>
+
 </div>
