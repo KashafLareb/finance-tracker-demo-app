@@ -4,7 +4,11 @@
 .container{
   background: fade-out( $color:white, $amount: .2);
 }
-.card{
+.bg-brown{
   background-color:rgba(46, 41, 29, 0.868) !important;
   color: white;
+}
+.card{
+  background-size: cover;
+  background-image: url('stock-exc.jpg');
 }
