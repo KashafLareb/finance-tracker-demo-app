@@ -1,0 +1,23 @@
+<table class="table bg-blue bg-gradient table-hover">
+  <thead>
+    <tr>
+      <th scope="col">User Id</th>
+      <th scope="col">Email</th>
+      <th scope="col">Joined Since</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @other_users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= time_ago_in_words(user.created_at) %></td>
+        <td><%= link_to 'Become friends', friendships_path(user: user.id), class: "btn link-warning btn-outline-secondary bg-gradient btn-sm", method: :post %></td>
+        <td></td>
+      </tr>
+    <% end %>
+    <tr>
+  </tbody>
+</table>
+You have <%= @other_users.count  %> people whom you can be friends with.
