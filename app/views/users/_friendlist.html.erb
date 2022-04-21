@@ -1,0 +1,22 @@
+<table class="table bg-orange bg-gradient table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Friend's Email</th>
+      <th scope="col">Friends since</th>
+      <th scope="col">Started On</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |friend| %>
+      <tr>
+        <td><%= friend.email %></td>
+        <td><%= time_ago_in_words(Friendship.where(user_id: current_user.id, friend_id: friend.id).first.created_at) %></td>
+        <td><%= (Friendship.where(user_id: current_user.id, friend_id: friend.id).first.created_at).strftime("%A, %B %d, %Y") %></td>
+        <td><%= link_to 'Unfriend', friendship_path(friend.id), method: :delete, class: "btn link-danger btn-outline-danger bg-gradient btn-sm", data: { confirm: "Are you sure?" } %></td>
+      </tr>
+    <% end %>
+    <tr>
+  </tbody>
+</table>
+You have <%= @friends.count  %> total friends yet.
