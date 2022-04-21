@@ -17,31 +17,35 @@
           <a class="nav-link <%= 'active' if request.path == other_users_path %>" href="/other_users">Other Users</a>
         </li>
       </ul>
-      <div class="navbar-nav ml-auto mx-4 pe-5 mb-lg-2">
-        <li class="nav-item dropdown">
+      <div class="navbar-nav ml-auto mb-lg-2">
+        <li class="nav-item dropdown pt-2">
           <a class="nav-link dropdown-toggle btn btn-outline-secondary" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             👤 Profile
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <%= link_to '📝 Edit profile', edit_user_registration_path, class: "dropdown-item" %>
-            </li>
-            <li>
-              <%= link_to "🔒 Sign out", destroy_user_session_path, :method => :delete, class: "dropdown-item"  %>
-            </li>
-            <% if !user_signed_in? %>
-              <li><hr class="dropdown-divider"></li>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+            <% if user_signed_in? %>
               <li>
-                <%= link_to '🔑 Change password', edit_user_password_path, class: "dropdown-item" %>
+                <%= link_to '📝 Edit profile', edit_user_registration_path, class: "dropdown-item" %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to '🔑 Log In', new_user_session_path, class: "dropdown-item" %>
               </li>
               <li>
-                <%= link_to '🗑️ Delete account', cancel_user_registration_path, class: "dropdown-item" %>
+                <%= link_to '🔏 Sign Up', new_user_registration_path, class: "dropdown-item" %>
               </li>
             <% end %>
           </ul>
         </li>
       </div>
       
+      <ul class="navbar-nav ml-auto ps-2 me-5 mb-lg-0">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "Sign out", destroy_user_session_path, class: "btn btn-outline-danger", :method => :delete %>
+        </li>
+      <% end %>
+      </ul>
     </div>
   </div>
 </nav>
