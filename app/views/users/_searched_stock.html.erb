@@ -1,0 +1,15 @@
+<%= render 'layouts/messages' %>
+<% if @stock %>
+  <div class="card border border-5 border-dark" style="width: 24rem;">
+    <div class="card-body bg-brown text-light">
+      <h5 class="card-title">Stock Details:</h5>
+      <p class="card-text p-2 bg-gradient">
+          Name: <strong><%= @stock.name %></strong><br>
+          Symbol: <strong><%= @stock.ticker %></strong><br>
+          Last Price: <strong><%= @stock.last_price %></strong><br>
+          <%= link_to 'Add to portfolio', user_stocks_path(user: current_user.id, ticker: @stock.ticker), class: "btn btn-outline-warning", method: :post %></strong><br>
+      </p>
+    </div>
+  </div>
+  <hr>
+<% end %>
