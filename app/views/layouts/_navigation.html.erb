@@ -9,34 +9,39 @@
         <li class="nav-item">
           <a class="nav-link <%= 'active' if request.path == my_portfolio_path %>" href="/my_portfolio">My Portfolio</a>
         </li>
+        
+        <li class="nav-item">
+          <a class="nav-link <%= 'active' if request.path == my_friends_path %>" href="/my_friends">My Friends</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= 'active' if request.path == other_users_path %>" href="/other_users">Other Users</a>
+        </li>
+      </ul>
+      <div class="navbar-nav ml-auto mx-4 pe-5 mb-lg-2">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Profile
+          <a class="nav-link dropdown-toggle btn btn-outline-secondary" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            👤 Profile
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
               <%= link_to '📝 Edit profile', edit_user_registration_path, class: "dropdown-item" %>
             </li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+              <%= link_to "🔒 Sign out", destroy_user_session_path, :method => :delete, class: "dropdown-item"  %>
+            </li>
+            <% if !user_signed_in? %>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to '🔑 Change password', edit_user_password_path, class: "dropdown-item" %>
+              </li>
+              <li>
+                <%= link_to '🗑️ Delete account', cancel_user_registration_path, class: "dropdown-item" %>
+              </li>
+            <% end %>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-dark" type="submit">Search</button>
-      </form>
-      <% if user_signed_in? %>
-        <ul class="navbar-nav ml-auto ms-2 mb-lg-0">
-          <li class="nav-item">
-            <%= link_to "Sign out", destroy_user_session_path, class: "btn btn-outline-danger", :method => :delete %>
-          </li>
-        </ul>
-      <% end %>
+      </div>
+      
     </div>
   </div>
 </nav>
