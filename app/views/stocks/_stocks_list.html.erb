@@ -11,10 +11,11 @@
   <tbody>
     <% @tracked_stocks.each do |stock| %>
       <tr>
-        <th scope="row">1</th>
+        <td><%= stock.id %></td>
         <td><%= stock.ticker %></td>
         <td><%= stock.name %></td>
         <td><%= stock.last_price %></td>
+        <td><%= link_to 'Remove', user_stock_path(stock), method: :delete, class: "link-danger", data: { confirm: "Are you sure?" } %></td>
       </tr>
     <% end %>
     <tr>
